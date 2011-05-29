@@ -23,10 +23,12 @@ set_include_path(APP_PATH . 'models');
 class AppController extends Controller {
 
     protected $my_auth;
+    public $title = "mdokeos";
 
     final protected function initialize() {
         Session::delete('myDbName');
         $this->my_auth = new MyAuth();
+        
         if (!$this->my_auth->check()) {
             Flash::warning($this->my_auth->getError());
             Input::delete('password');
