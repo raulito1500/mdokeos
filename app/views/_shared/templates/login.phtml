@@ -1,21 +1,92 @@
 <!doctype html>
-<html>
+<html lang="es">
     <head>
-        <title>Iniciar sesión</title>
+        <!-- Meta -->
         <meta charset="utf-8" />
+        <title><?php echo $title ?> - premioscmv.com</title>        
+
+        <link href='http://fonts.googleapis.com/css?family=Amaranth' rel='stylesheet' type='text/css'>
+
+        <!-- Disable phone number linking -->
+        <meta name="format-detection" content="telephone=no" />
+
+        <!--[if lt IE 9]>
+        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+
+        <!-- Global Stylesheets -->
+        <link rel="stylesheet" href="/css/less4/reset.css" media="all" />
+        <link rel="stylesheet" href="/css/less4/fonts.css" media="all" />
+        <link rel="stylesheet" href="/css/less4/style.css" media="all" />
+
+        <!-- Fallback if browser does not support media queries + javascript (Read: Internet Explorer 7 - 8) -->
+        <link rel="stylesheet" href="/css/less4/10col.css" media="all" />
+
+        <!-- Media Queries / LESS -->        
+        <link rel="stylesheet" href="/css/less4/10col.css" media="only screen and (min-width: 992px)" />
+        <link rel="stylesheet" href="/css/less4/8col.css" media="only screen and (min-width: 768px) and (max-width: 991px)" />
+        <link rel="stylesheet" href="/css/less4/3col.css" media="only screen and (max-width: 767px)" />
+        <link rel="stylesheet" href="/css/less4/5col.css" media="only screen and (min-width: 480px) and (max-width: 767px)" />
+
+        <!-- Smartphone stuff -->
+        <meta name="viewport" content="width=device-width; initial-scale=1"/>
+        <!-- Add "maximum-scale=1.0, user-scalable=no" to fix the Mobile Safari auto-zoom bug on orientation changes, but keep in mind that it will disable user-zooming completely. Bad for accessibility. -->
+
+        <!-- Favicons, 16x16 -->
+        <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+        <link rel="icon" href="/img/favicon.ico" type="image/x-icon" />
+
+        <!-- Fancy Apple icons, 144x144 -->
+        <link rel="apple-touch-icon" sizes="114x114" href="assets/114-icon.png"/>
+
+        <!-- Fancy Apple 'fake webapp' support -->
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+        <link rel="apple-touch-startup-image" href="images/splash.png">
+
+        <!-- Jquery -->
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
+
+        <!-- Development tool: Less Grid by @RnowM, http://arnaumarch.com/en/less-grid.html 
+        <script src="/javascript/less/less-grid-4.js"></script> -->
+
+        <!-- Media Queries for IE -->
+        <script src="/javascript/less/jquery.mediaqueries1.19.js"></script>        
+
     </head>
+
     <body>
-        <div class="comunidad" id="comunidad">
-            <h1>Iniciar sesión</h1>
-            <?php View::content()?>
-            <?php echo Form::open() ?>
-                <input type="hidden" name='mode' value='auth' />
-                <label for="username" class="required">Usuario</label>
-                <?php echo Form::text('username','placeholder="Escriba aqui su nombre de usuario" required="required" autofocus="autofocus"') ?><br />
-                <label for="password" class="required">Clave</label>
-                <?php echo Form::pass('password','placeholder="Escriba aqui su clave" required="required"') ?><br />
-                <button type="submit" class="entrar" >Entrar</button>
-            <?php echo Form::close() ?>     
-        </div>
+        
+        <div id="content">               
+            <header>                
+            </header>
+            <nav>
+                <ul>
+                    <li><a href="/" accesskey="1">Inicio</a></li>
+                    <li><a href="/sobre-los-premioscmv/" accesskey="2">Sobre los Premios</a></li>                    
+                    <li><a href="/contacto/" accesskey="3">Contáctanos</a></li>                    
+                </ul>
+            </nav>
+            <section id="contenido">
+                <div class="comunidad" id="comunidad">
+                    <h1>Iniciar sesión</h1>
+                    <?php View::content()?>
+                    <?php echo Form::open() ?>
+                        <input type="hidden" name='mode' value='auth' />
+                        <label for="username" class="required">Usuario</label>
+                        <?php echo Form::text('username','placeholder="Escriba aqui su nombre de usuario" required="required" autofocus="autofocus"') ?><br />
+                        <label for="password" class="required">Clave</label>
+                        <?php echo Form::pass('password','placeholder="Escriba aqui su clave" required="required"') ?><br />
+                        <button type="submit" class="entrar" >Entrar</button>
+                    <?php echo Form::close() ?>     
+                </div>
+            </section>               
+            <aside id="izquierda">                
+                
+            </aside>
+            <footer>                
+                Powered by <a href="http://kumbiaphp.com">kumbiaphp.com</a>
+            </footer>
+        </div>        
     </body>
 </html>
