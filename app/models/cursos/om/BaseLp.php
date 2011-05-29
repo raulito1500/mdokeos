@@ -1,0 +1,1667 @@
+<?php
+
+
+/**
+ * Base class that represents a row from the 'lp' table.
+ *
+ * 
+ *
+ * @package    propel.generator.dokeos.om
+ */
+abstract class BaseLp extends BaseObject  implements Persistent
+{
+
+	/**
+	 * Peer class name
+	 */
+	const PEER = 'LpPeer';
+
+	/**
+	 * The Peer class.
+	 * Instance provides a convenient way of calling static methods on a class
+	 * that calling code may not be able to identify.
+	 * @var        LpPeer
+	 */
+	protected static $peer;
+
+	/**
+	 * The value for the id field.
+	 * @var        int
+	 */
+	protected $id;
+
+	/**
+	 * The value for the lp_type field.
+	 * @var        int
+	 */
+	protected $lp_type;
+
+	/**
+	 * The value for the name field.
+	 * @var        string
+	 */
+	protected $name;
+
+	/**
+	 * The value for the ref field.
+	 * @var        string
+	 */
+	protected $ref;
+
+	/**
+	 * The value for the description field.
+	 * @var        string
+	 */
+	protected $description;
+
+	/**
+	 * The value for the path field.
+	 * @var        string
+	 */
+	protected $path;
+
+	/**
+	 * The value for the force_commit field.
+	 * Note: this column has a database default value of: 0
+	 * @var        int
+	 */
+	protected $force_commit;
+
+	/**
+	 * The value for the default_view_mod field.
+	 * Note: this column has a database default value of: 'embedded'
+	 * @var        string
+	 */
+	protected $default_view_mod;
+
+	/**
+	 * The value for the default_encoding field.
+	 * Note: this column has a database default value of: 'UTF-8'
+	 * @var        string
+	 */
+	protected $default_encoding;
+
+	/**
+	 * The value for the display_order field.
+	 * Note: this column has a database default value of: 0
+	 * @var        int
+	 */
+	protected $display_order;
+
+	/**
+	 * The value for the content_maker field.
+	 * @var        string
+	 */
+	protected $content_maker;
+
+	/**
+	 * The value for the content_local field.
+	 * Note: this column has a database default value of: 'local'
+	 * @var        string
+	 */
+	protected $content_local;
+
+	/**
+	 * The value for the content_license field.
+	 * @var        string
+	 */
+	protected $content_license;
+
+	/**
+	 * The value for the prevent_reinit field.
+	 * Note: this column has a database default value of: 1
+	 * @var        int
+	 */
+	protected $prevent_reinit;
+
+	/**
+	 * The value for the js_lib field.
+	 * @var        string
+	 */
+	protected $js_lib;
+
+	/**
+	 * The value for the debug field.
+	 * Note: this column has a database default value of: 0
+	 * @var        int
+	 */
+	protected $debug;
+
+	/**
+	 * The value for the theme field.
+	 * Note: this column has a database default value of: ''
+	 * @var        string
+	 */
+	protected $theme;
+
+	/**
+	 * The value for the preview_image field.
+	 * Note: this column has a database default value of: ''
+	 * @var        string
+	 */
+	protected $preview_image;
+
+	/**
+	 * The value for the author field.
+	 * Note: this column has a database default value of: ''
+	 * @var        string
+	 */
+	protected $author;
+
+	/**
+	 * The value for the session_id field.
+	 * Note: this column has a database default value of: 0
+	 * @var        int
+	 */
+	protected $session_id;
+
+	/**
+	 * Flag to prevent endless save loop, if this object is referenced
+	 * by another object which falls in this transaction.
+	 * @var        boolean
+	 */
+	protected $alreadyInSave = false;
+
+	/**
+	 * Flag to prevent endless validation loop, if this object is referenced
+	 * by another object which falls in this transaction.
+	 * @var        boolean
+	 */
+	protected $alreadyInValidation = false;
+
+	/**
+	 * Applies default values to this object.
+	 * This method should be called from the object's constructor (or
+	 * equivalent initialization method).
+	 * @see        __construct()
+	 */
+	public function applyDefaultValues()
+	{
+		$this->force_commit = 0;
+		$this->default_view_mod = 'embedded';
+		$this->default_encoding = 'UTF-8';
+		$this->display_order = 0;
+		$this->content_local = 'local';
+		$this->prevent_reinit = 1;
+		$this->debug = 0;
+		$this->theme = '';
+		$this->preview_image = '';
+		$this->author = '';
+		$this->session_id = 0;
+	}
+
+	/**
+	 * Initializes internal state of BaseLp object.
+	 * @see        applyDefaults()
+	 */
+	public function __construct()
+	{
+		parent::__construct();
+		$this->applyDefaultValues();
+	}
+
+	/**
+	 * Get the [id] column value.
+	 * 
+	 * @return     int
+	 */
+	public function getId()
+	{
+		return $this->id;
+	}
+
+	/**
+	 * Get the [lp_type] column value.
+	 * 
+	 * @return     int
+	 */
+	public function getLpType()
+	{
+		return $this->lp_type;
+	}
+
+	/**
+	 * Get the [name] column value.
+	 * 
+	 * @return     string
+	 */
+	public function getName()
+	{
+		return $this->name;
+	}
+
+	/**
+	 * Get the [ref] column value.
+	 * 
+	 * @return     string
+	 */
+	public function getRef()
+	{
+		return $this->ref;
+	}
+
+	/**
+	 * Get the [description] column value.
+	 * 
+	 * @return     string
+	 */
+	public function getDescription()
+	{
+		return $this->description;
+	}
+
+	/**
+	 * Get the [path] column value.
+	 * 
+	 * @return     string
+	 */
+	public function getPath()
+	{
+		return $this->path;
+	}
+
+	/**
+	 * Get the [force_commit] column value.
+	 * 
+	 * @return     int
+	 */
+	public function getForceCommit()
+	{
+		return $this->force_commit;
+	}
+
+	/**
+	 * Get the [default_view_mod] column value.
+	 * 
+	 * @return     string
+	 */
+	public function getDefaultViewMod()
+	{
+		return $this->default_view_mod;
+	}
+
+	/**
+	 * Get the [default_encoding] column value.
+	 * 
+	 * @return     string
+	 */
+	public function getDefaultEncoding()
+	{
+		return $this->default_encoding;
+	}
+
+	/**
+	 * Get the [display_order] column value.
+	 * 
+	 * @return     int
+	 */
+	public function getDisplayOrder()
+	{
+		return $this->display_order;
+	}
+
+	/**
+	 * Get the [content_maker] column value.
+	 * 
+	 * @return     string
+	 */
+	public function getContentMaker()
+	{
+		return $this->content_maker;
+	}
+
+	/**
+	 * Get the [content_local] column value.
+	 * 
+	 * @return     string
+	 */
+	public function getContentLocal()
+	{
+		return $this->content_local;
+	}
+
+	/**
+	 * Get the [content_license] column value.
+	 * 
+	 * @return     string
+	 */
+	public function getContentLicense()
+	{
+		return $this->content_license;
+	}
+
+	/**
+	 * Get the [prevent_reinit] column value.
+	 * 
+	 * @return     int
+	 */
+	public function getPreventReinit()
+	{
+		return $this->prevent_reinit;
+	}
+
+	/**
+	 * Get the [js_lib] column value.
+	 * 
+	 * @return     string
+	 */
+	public function getJsLib()
+	{
+		return $this->js_lib;
+	}
+
+	/**
+	 * Get the [debug] column value.
+	 * 
+	 * @return     int
+	 */
+	public function getDebug()
+	{
+		return $this->debug;
+	}
+
+	/**
+	 * Get the [theme] column value.
+	 * 
+	 * @return     string
+	 */
+	public function getTheme()
+	{
+		return $this->theme;
+	}
+
+	/**
+	 * Get the [preview_image] column value.
+	 * 
+	 * @return     string
+	 */
+	public function getPreviewImage()
+	{
+		return $this->preview_image;
+	}
+
+	/**
+	 * Get the [author] column value.
+	 * 
+	 * @return     string
+	 */
+	public function getAuthor()
+	{
+		return $this->author;
+	}
+
+	/**
+	 * Get the [session_id] column value.
+	 * 
+	 * @return     int
+	 */
+	public function getSessionId()
+	{
+		return $this->session_id;
+	}
+
+	/**
+	 * Set the value of [id] column.
+	 * 
+	 * @param      int $v new value
+	 * @return     Lp The current object (for fluent API support)
+	 */
+	public function setId($v)
+	{
+		if ($v !== null) {
+			$v = (int) $v;
+		}
+
+		if ($this->id !== $v) {
+			$this->id = $v;
+			$this->modifiedColumns[] = LpPeer::ID;
+		}
+
+		return $this;
+	} // setId()
+
+	/**
+	 * Set the value of [lp_type] column.
+	 * 
+	 * @param      int $v new value
+	 * @return     Lp The current object (for fluent API support)
+	 */
+	public function setLpType($v)
+	{
+		if ($v !== null) {
+			$v = (int) $v;
+		}
+
+		if ($this->lp_type !== $v) {
+			$this->lp_type = $v;
+			$this->modifiedColumns[] = LpPeer::LP_TYPE;
+		}
+
+		return $this;
+	} // setLpType()
+
+	/**
+	 * Set the value of [name] column.
+	 * 
+	 * @param      string $v new value
+	 * @return     Lp The current object (for fluent API support)
+	 */
+	public function setName($v)
+	{
+		if ($v !== null) {
+			$v = (string) $v;
+		}
+
+		if ($this->name !== $v) {
+			$this->name = $v;
+			$this->modifiedColumns[] = LpPeer::NAME;
+		}
+
+		return $this;
+	} // setName()
+
+	/**
+	 * Set the value of [ref] column.
+	 * 
+	 * @param      string $v new value
+	 * @return     Lp The current object (for fluent API support)
+	 */
+	public function setRef($v)
+	{
+		if ($v !== null) {
+			$v = (string) $v;
+		}
+
+		if ($this->ref !== $v) {
+			$this->ref = $v;
+			$this->modifiedColumns[] = LpPeer::REF;
+		}
+
+		return $this;
+	} // setRef()
+
+	/**
+	 * Set the value of [description] column.
+	 * 
+	 * @param      string $v new value
+	 * @return     Lp The current object (for fluent API support)
+	 */
+	public function setDescription($v)
+	{
+		if ($v !== null) {
+			$v = (string) $v;
+		}
+
+		if ($this->description !== $v) {
+			$this->description = $v;
+			$this->modifiedColumns[] = LpPeer::DESCRIPTION;
+		}
+
+		return $this;
+	} // setDescription()
+
+	/**
+	 * Set the value of [path] column.
+	 * 
+	 * @param      string $v new value
+	 * @return     Lp The current object (for fluent API support)
+	 */
+	public function setPath($v)
+	{
+		if ($v !== null) {
+			$v = (string) $v;
+		}
+
+		if ($this->path !== $v) {
+			$this->path = $v;
+			$this->modifiedColumns[] = LpPeer::PATH;
+		}
+
+		return $this;
+	} // setPath()
+
+	/**
+	 * Set the value of [force_commit] column.
+	 * 
+	 * @param      int $v new value
+	 * @return     Lp The current object (for fluent API support)
+	 */
+	public function setForceCommit($v)
+	{
+		if ($v !== null) {
+			$v = (int) $v;
+		}
+
+		if ($this->force_commit !== $v || $this->isNew()) {
+			$this->force_commit = $v;
+			$this->modifiedColumns[] = LpPeer::FORCE_COMMIT;
+		}
+
+		return $this;
+	} // setForceCommit()
+
+	/**
+	 * Set the value of [default_view_mod] column.
+	 * 
+	 * @param      string $v new value
+	 * @return     Lp The current object (for fluent API support)
+	 */
+	public function setDefaultViewMod($v)
+	{
+		if ($v !== null) {
+			$v = (string) $v;
+		}
+
+		if ($this->default_view_mod !== $v || $this->isNew()) {
+			$this->default_view_mod = $v;
+			$this->modifiedColumns[] = LpPeer::DEFAULT_VIEW_MOD;
+		}
+
+		return $this;
+	} // setDefaultViewMod()
+
+	/**
+	 * Set the value of [default_encoding] column.
+	 * 
+	 * @param      string $v new value
+	 * @return     Lp The current object (for fluent API support)
+	 */
+	public function setDefaultEncoding($v)
+	{
+		if ($v !== null) {
+			$v = (string) $v;
+		}
+
+		if ($this->default_encoding !== $v || $this->isNew()) {
+			$this->default_encoding = $v;
+			$this->modifiedColumns[] = LpPeer::DEFAULT_ENCODING;
+		}
+
+		return $this;
+	} // setDefaultEncoding()
+
+	/**
+	 * Set the value of [display_order] column.
+	 * 
+	 * @param      int $v new value
+	 * @return     Lp The current object (for fluent API support)
+	 */
+	public function setDisplayOrder($v)
+	{
+		if ($v !== null) {
+			$v = (int) $v;
+		}
+
+		if ($this->display_order !== $v || $this->isNew()) {
+			$this->display_order = $v;
+			$this->modifiedColumns[] = LpPeer::DISPLAY_ORDER;
+		}
+
+		return $this;
+	} // setDisplayOrder()
+
+	/**
+	 * Set the value of [content_maker] column.
+	 * 
+	 * @param      string $v new value
+	 * @return     Lp The current object (for fluent API support)
+	 */
+	public function setContentMaker($v)
+	{
+		if ($v !== null) {
+			$v = (string) $v;
+		}
+
+		if ($this->content_maker !== $v) {
+			$this->content_maker = $v;
+			$this->modifiedColumns[] = LpPeer::CONTENT_MAKER;
+		}
+
+		return $this;
+	} // setContentMaker()
+
+	/**
+	 * Set the value of [content_local] column.
+	 * 
+	 * @param      string $v new value
+	 * @return     Lp The current object (for fluent API support)
+	 */
+	public function setContentLocal($v)
+	{
+		if ($v !== null) {
+			$v = (string) $v;
+		}
+
+		if ($this->content_local !== $v || $this->isNew()) {
+			$this->content_local = $v;
+			$this->modifiedColumns[] = LpPeer::CONTENT_LOCAL;
+		}
+
+		return $this;
+	} // setContentLocal()
+
+	/**
+	 * Set the value of [content_license] column.
+	 * 
+	 * @param      string $v new value
+	 * @return     Lp The current object (for fluent API support)
+	 */
+	public function setContentLicense($v)
+	{
+		if ($v !== null) {
+			$v = (string) $v;
+		}
+
+		if ($this->content_license !== $v) {
+			$this->content_license = $v;
+			$this->modifiedColumns[] = LpPeer::CONTENT_LICENSE;
+		}
+
+		return $this;
+	} // setContentLicense()
+
+	/**
+	 * Set the value of [prevent_reinit] column.
+	 * 
+	 * @param      int $v new value
+	 * @return     Lp The current object (for fluent API support)
+	 */
+	public function setPreventReinit($v)
+	{
+		if ($v !== null) {
+			$v = (int) $v;
+		}
+
+		if ($this->prevent_reinit !== $v || $this->isNew()) {
+			$this->prevent_reinit = $v;
+			$this->modifiedColumns[] = LpPeer::PREVENT_REINIT;
+		}
+
+		return $this;
+	} // setPreventReinit()
+
+	/**
+	 * Set the value of [js_lib] column.
+	 * 
+	 * @param      string $v new value
+	 * @return     Lp The current object (for fluent API support)
+	 */
+	public function setJsLib($v)
+	{
+		if ($v !== null) {
+			$v = (string) $v;
+		}
+
+		if ($this->js_lib !== $v) {
+			$this->js_lib = $v;
+			$this->modifiedColumns[] = LpPeer::JS_LIB;
+		}
+
+		return $this;
+	} // setJsLib()
+
+	/**
+	 * Set the value of [debug] column.
+	 * 
+	 * @param      int $v new value
+	 * @return     Lp The current object (for fluent API support)
+	 */
+	public function setDebug($v)
+	{
+		if ($v !== null) {
+			$v = (int) $v;
+		}
+
+		if ($this->debug !== $v || $this->isNew()) {
+			$this->debug = $v;
+			$this->modifiedColumns[] = LpPeer::DEBUG;
+		}
+
+		return $this;
+	} // setDebug()
+
+	/**
+	 * Set the value of [theme] column.
+	 * 
+	 * @param      string $v new value
+	 * @return     Lp The current object (for fluent API support)
+	 */
+	public function setTheme($v)
+	{
+		if ($v !== null) {
+			$v = (string) $v;
+		}
+
+		if ($this->theme !== $v || $this->isNew()) {
+			$this->theme = $v;
+			$this->modifiedColumns[] = LpPeer::THEME;
+		}
+
+		return $this;
+	} // setTheme()
+
+	/**
+	 * Set the value of [preview_image] column.
+	 * 
+	 * @param      string $v new value
+	 * @return     Lp The current object (for fluent API support)
+	 */
+	public function setPreviewImage($v)
+	{
+		if ($v !== null) {
+			$v = (string) $v;
+		}
+
+		if ($this->preview_image !== $v || $this->isNew()) {
+			$this->preview_image = $v;
+			$this->modifiedColumns[] = LpPeer::PREVIEW_IMAGE;
+		}
+
+		return $this;
+	} // setPreviewImage()
+
+	/**
+	 * Set the value of [author] column.
+	 * 
+	 * @param      string $v new value
+	 * @return     Lp The current object (for fluent API support)
+	 */
+	public function setAuthor($v)
+	{
+		if ($v !== null) {
+			$v = (string) $v;
+		}
+
+		if ($this->author !== $v || $this->isNew()) {
+			$this->author = $v;
+			$this->modifiedColumns[] = LpPeer::AUTHOR;
+		}
+
+		return $this;
+	} // setAuthor()
+
+	/**
+	 * Set the value of [session_id] column.
+	 * 
+	 * @param      int $v new value
+	 * @return     Lp The current object (for fluent API support)
+	 */
+	public function setSessionId($v)
+	{
+		if ($v !== null) {
+			$v = (int) $v;
+		}
+
+		if ($this->session_id !== $v || $this->isNew()) {
+			$this->session_id = $v;
+			$this->modifiedColumns[] = LpPeer::SESSION_ID;
+		}
+
+		return $this;
+	} // setSessionId()
+
+	/**
+	 * Indicates whether the columns in this object are only set to default values.
+	 *
+	 * This method can be used in conjunction with isModified() to indicate whether an object is both
+	 * modified _and_ has some values set which are non-default.
+	 *
+	 * @return     boolean Whether the columns in this object are only been set with default values.
+	 */
+	public function hasOnlyDefaultValues()
+	{
+			if ($this->force_commit !== 0) {
+				return false;
+			}
+
+			if ($this->default_view_mod !== 'embedded') {
+				return false;
+			}
+
+			if ($this->default_encoding !== 'UTF-8') {
+				return false;
+			}
+
+			if ($this->display_order !== 0) {
+				return false;
+			}
+
+			if ($this->content_local !== 'local') {
+				return false;
+			}
+
+			if ($this->prevent_reinit !== 1) {
+				return false;
+			}
+
+			if ($this->debug !== 0) {
+				return false;
+			}
+
+			if ($this->theme !== '') {
+				return false;
+			}
+
+			if ($this->preview_image !== '') {
+				return false;
+			}
+
+			if ($this->author !== '') {
+				return false;
+			}
+
+			if ($this->session_id !== 0) {
+				return false;
+			}
+
+		// otherwise, everything was equal, so return TRUE
+		return true;
+	} // hasOnlyDefaultValues()
+
+	/**
+	 * Hydrates (populates) the object variables with values from the database resultset.
+	 *
+	 * An offset (0-based "start column") is specified so that objects can be hydrated
+	 * with a subset of the columns in the resultset rows.  This is needed, for example,
+	 * for results of JOIN queries where the resultset row includes columns from two or
+	 * more tables.
+	 *
+	 * @param      array $row The row returned by PDOStatement->fetch(PDO::FETCH_NUM)
+	 * @param      int $startcol 0-based offset column which indicates which restultset column to start with.
+	 * @param      boolean $rehydrate Whether this object is being re-hydrated from the database.
+	 * @return     int next starting column
+	 * @throws     PropelException  - Any caught Exception will be rewrapped as a PropelException.
+	 */
+	public function hydrate($row, $startcol = 0, $rehydrate = false)
+	{
+		try {
+
+			$this->id = ($row[$startcol + 0] !== null) ? (int) $row[$startcol + 0] : null;
+			$this->lp_type = ($row[$startcol + 1] !== null) ? (int) $row[$startcol + 1] : null;
+			$this->name = ($row[$startcol + 2] !== null) ? (string) $row[$startcol + 2] : null;
+			$this->ref = ($row[$startcol + 3] !== null) ? (string) $row[$startcol + 3] : null;
+			$this->description = ($row[$startcol + 4] !== null) ? (string) $row[$startcol + 4] : null;
+			$this->path = ($row[$startcol + 5] !== null) ? (string) $row[$startcol + 5] : null;
+			$this->force_commit = ($row[$startcol + 6] !== null) ? (int) $row[$startcol + 6] : null;
+			$this->default_view_mod = ($row[$startcol + 7] !== null) ? (string) $row[$startcol + 7] : null;
+			$this->default_encoding = ($row[$startcol + 8] !== null) ? (string) $row[$startcol + 8] : null;
+			$this->display_order = ($row[$startcol + 9] !== null) ? (int) $row[$startcol + 9] : null;
+			$this->content_maker = ($row[$startcol + 10] !== null) ? (string) $row[$startcol + 10] : null;
+			$this->content_local = ($row[$startcol + 11] !== null) ? (string) $row[$startcol + 11] : null;
+			$this->content_license = ($row[$startcol + 12] !== null) ? (string) $row[$startcol + 12] : null;
+			$this->prevent_reinit = ($row[$startcol + 13] !== null) ? (int) $row[$startcol + 13] : null;
+			$this->js_lib = ($row[$startcol + 14] !== null) ? (string) $row[$startcol + 14] : null;
+			$this->debug = ($row[$startcol + 15] !== null) ? (int) $row[$startcol + 15] : null;
+			$this->theme = ($row[$startcol + 16] !== null) ? (string) $row[$startcol + 16] : null;
+			$this->preview_image = ($row[$startcol + 17] !== null) ? (string) $row[$startcol + 17] : null;
+			$this->author = ($row[$startcol + 18] !== null) ? (string) $row[$startcol + 18] : null;
+			$this->session_id = ($row[$startcol + 19] !== null) ? (int) $row[$startcol + 19] : null;
+			$this->resetModified();
+
+			$this->setNew(false);
+
+			if ($rehydrate) {
+				$this->ensureConsistency();
+			}
+
+			return $startcol + 20; // 20 = LpPeer::NUM_COLUMNS - LpPeer::NUM_LAZY_LOAD_COLUMNS).
+
+		} catch (Exception $e) {
+			throw new PropelException("Error populating Lp object", $e);
+		}
+	}
+
+	/**
+	 * Checks and repairs the internal consistency of the object.
+	 *
+	 * This method is executed after an already-instantiated object is re-hydrated
+	 * from the database.  It exists to check any foreign keys to make sure that
+	 * the objects related to the current object are correct based on foreign key.
+	 *
+	 * You can override this method in the stub class, but you should always invoke
+	 * the base method from the overridden method (i.e. parent::ensureConsistency()),
+	 * in case your model changes.
+	 *
+	 * @throws     PropelException
+	 */
+	public function ensureConsistency()
+	{
+
+	} // ensureConsistency
+
+	/**
+	 * Reloads this object from datastore based on primary key and (optionally) resets all associated objects.
+	 *
+	 * This will only work if the object has been saved and has a valid primary key set.
+	 *
+	 * @param      boolean $deep (optional) Whether to also de-associated any related objects.
+	 * @param      PropelPDO $con (optional) The PropelPDO connection to use.
+	 * @return     void
+	 * @throws     PropelException - if this object is deleted, unsaved or doesn't have pk match in db
+	 */
+	public function reload($deep = false, PropelPDO $con = null)
+	{
+		if ($this->isDeleted()) {
+			throw new PropelException("Cannot reload a deleted object.");
+		}
+
+		if ($this->isNew()) {
+			throw new PropelException("Cannot reload an unsaved object.");
+		}
+
+		if ($con === null) {
+			$con = Propel::getConnection(LpPeer::DATABASE_NAME, Propel::CONNECTION_READ);
+		}
+
+		// We don't need to alter the object instance pool; we're just modifying this instance
+		// already in the pool.
+
+		$stmt = LpPeer::doSelectStmt($this->buildPkeyCriteria(), $con);
+		$row = $stmt->fetch(PDO::FETCH_NUM);
+		$stmt->closeCursor();
+		if (!$row) {
+			throw new PropelException('Cannot find matching row in the database to reload object values.');
+		}
+		$this->hydrate($row, 0, true); // rehydrate
+
+		if ($deep) {  // also de-associate any related objects?
+
+		} // if (deep)
+	}
+
+	/**
+	 * Removes this object from datastore and sets delete attribute.
+	 *
+	 * @param      PropelPDO $con
+	 * @return     void
+	 * @throws     PropelException
+	 * @see        BaseObject::setDeleted()
+	 * @see        BaseObject::isDeleted()
+	 */
+	public function delete(PropelPDO $con = null)
+	{
+		if ($this->isDeleted()) {
+			throw new PropelException("This object has already been deleted.");
+		}
+
+		if ($con === null) {
+			$con = Propel::getConnection(LpPeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
+		}
+
+		$con->beginTransaction();
+		try {
+			$ret = $this->preDelete($con);
+			if ($ret) {
+				LpQuery::create()
+					->filterByPrimaryKey($this->getPrimaryKey())
+					->delete($con);
+				$this->postDelete($con);
+				$con->commit();
+				$this->setDeleted(true);
+			} else {
+				$con->commit();
+			}
+		} catch (PropelException $e) {
+			$con->rollBack();
+			throw $e;
+		}
+	}
+
+	/**
+	 * Persists this object to the database.
+	 *
+	 * If the object is new, it inserts it; otherwise an update is performed.
+	 * All modified related objects will also be persisted in the doSave()
+	 * method.  This method wraps all precipitate database operations in a
+	 * single transaction.
+	 *
+	 * @param      PropelPDO $con
+	 * @return     int The number of rows affected by this insert/update and any referring fk objects' save() operations.
+	 * @throws     PropelException
+	 * @see        doSave()
+	 */
+	public function save(PropelPDO $con = null)
+	{
+		if ($this->isDeleted()) {
+			throw new PropelException("You cannot save an object that has been deleted.");
+		}
+
+		if ($con === null) {
+			$con = Propel::getConnection(LpPeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
+		}
+
+		$con->beginTransaction();
+		$isInsert = $this->isNew();
+		try {
+			$ret = $this->preSave($con);
+			if ($isInsert) {
+				$ret = $ret && $this->preInsert($con);
+			} else {
+				$ret = $ret && $this->preUpdate($con);
+			}
+			if ($ret) {
+				$affectedRows = $this->doSave($con);
+				if ($isInsert) {
+					$this->postInsert($con);
+				} else {
+					$this->postUpdate($con);
+				}
+				$this->postSave($con);
+				LpPeer::addInstanceToPool($this);
+			} else {
+				$affectedRows = 0;
+			}
+			$con->commit();
+			return $affectedRows;
+		} catch (PropelException $e) {
+			$con->rollBack();
+			throw $e;
+		}
+	}
+
+	/**
+	 * Performs the work of inserting or updating the row in the database.
+	 *
+	 * If the object is new, it inserts it; otherwise an update is performed.
+	 * All related objects are also updated in this method.
+	 *
+	 * @param      PropelPDO $con
+	 * @return     int The number of rows affected by this insert/update and any referring fk objects' save() operations.
+	 * @throws     PropelException
+	 * @see        save()
+	 */
+	protected function doSave(PropelPDO $con)
+	{
+		$affectedRows = 0; // initialize var to track total num of affected rows
+		if (!$this->alreadyInSave) {
+			$this->alreadyInSave = true;
+
+			if ($this->isNew() ) {
+				$this->modifiedColumns[] = LpPeer::ID;
+			}
+
+			// If this object has been modified, then save it to the database.
+			if ($this->isModified()) {
+				if ($this->isNew()) {
+					$criteria = $this->buildCriteria();
+					if ($criteria->keyContainsValue(LpPeer::ID) ) {
+						throw new PropelException('Cannot insert a value for auto-increment primary key ('.LpPeer::ID.')');
+					}
+
+					$pk = BasePeer::doInsert($criteria, $con);
+					$affectedRows = 1;
+					$this->setId($pk);  //[IMV] update autoincrement primary key
+					$this->setNew(false);
+				} else {
+					$affectedRows = LpPeer::doUpdate($this, $con);
+				}
+
+				$this->resetModified(); // [HL] After being saved an object is no longer 'modified'
+			}
+
+			$this->alreadyInSave = false;
+
+		}
+		return $affectedRows;
+	} // doSave()
+
+	/**
+	 * Array of ValidationFailed objects.
+	 * @var        array ValidationFailed[]
+	 */
+	protected $validationFailures = array();
+
+	/**
+	 * Gets any ValidationFailed objects that resulted from last call to validate().
+	 *
+	 *
+	 * @return     array ValidationFailed[]
+	 * @see        validate()
+	 */
+	public function getValidationFailures()
+	{
+		return $this->validationFailures;
+	}
+
+	/**
+	 * Validates the objects modified field values and all objects related to this table.
+	 *
+	 * If $columns is either a column name or an array of column names
+	 * only those columns are validated.
+	 *
+	 * @param      mixed $columns Column name or an array of column names.
+	 * @return     boolean Whether all columns pass validation.
+	 * @see        doValidate()
+	 * @see        getValidationFailures()
+	 */
+	public function validate($columns = null)
+	{
+		$res = $this->doValidate($columns);
+		if ($res === true) {
+			$this->validationFailures = array();
+			return true;
+		} else {
+			$this->validationFailures = $res;
+			return false;
+		}
+	}
+
+	/**
+	 * This function performs the validation work for complex object models.
+	 *
+	 * In addition to checking the current object, all related objects will
+	 * also be validated.  If all pass then <code>true</code> is returned; otherwise
+	 * an aggreagated array of ValidationFailed objects will be returned.
+	 *
+	 * @param      array $columns Array of column names to validate.
+	 * @return     mixed <code>true</code> if all validations pass; array of <code>ValidationFailed</code> objets otherwise.
+	 */
+	protected function doValidate($columns = null)
+	{
+		if (!$this->alreadyInValidation) {
+			$this->alreadyInValidation = true;
+			$retval = null;
+
+			$failureMap = array();
+
+
+			if (($retval = LpPeer::doValidate($this, $columns)) !== true) {
+				$failureMap = array_merge($failureMap, $retval);
+			}
+
+
+
+			$this->alreadyInValidation = false;
+		}
+
+		return (!empty($failureMap) ? $failureMap : true);
+	}
+
+	/**
+	 * Retrieves a field from the object by name passed in as a string.
+	 *
+	 * @param      string $name name
+	 * @param      string $type The type of fieldname the $name is of:
+	 *                     one of the class type constants BasePeer::TYPE_PHPNAME, BasePeer::TYPE_STUDLYPHPNAME
+	 *                     BasePeer::TYPE_COLNAME, BasePeer::TYPE_FIELDNAME, BasePeer::TYPE_NUM
+	 * @return     mixed Value of field.
+	 */
+	public function getByName($name, $type = BasePeer::TYPE_PHPNAME)
+	{
+		$pos = LpPeer::translateFieldName($name, $type, BasePeer::TYPE_NUM);
+		$field = $this->getByPosition($pos);
+		return $field;
+	}
+
+	/**
+	 * Retrieves a field from the object by Position as specified in the xml schema.
+	 * Zero-based.
+	 *
+	 * @param      int $pos position in xml schema
+	 * @return     mixed Value of field at $pos
+	 */
+	public function getByPosition($pos)
+	{
+		switch($pos) {
+			case 0:
+				return $this->getId();
+				break;
+			case 1:
+				return $this->getLpType();
+				break;
+			case 2:
+				return $this->getName();
+				break;
+			case 3:
+				return $this->getRef();
+				break;
+			case 4:
+				return $this->getDescription();
+				break;
+			case 5:
+				return $this->getPath();
+				break;
+			case 6:
+				return $this->getForceCommit();
+				break;
+			case 7:
+				return $this->getDefaultViewMod();
+				break;
+			case 8:
+				return $this->getDefaultEncoding();
+				break;
+			case 9:
+				return $this->getDisplayOrder();
+				break;
+			case 10:
+				return $this->getContentMaker();
+				break;
+			case 11:
+				return $this->getContentLocal();
+				break;
+			case 12:
+				return $this->getContentLicense();
+				break;
+			case 13:
+				return $this->getPreventReinit();
+				break;
+			case 14:
+				return $this->getJsLib();
+				break;
+			case 15:
+				return $this->getDebug();
+				break;
+			case 16:
+				return $this->getTheme();
+				break;
+			case 17:
+				return $this->getPreviewImage();
+				break;
+			case 18:
+				return $this->getAuthor();
+				break;
+			case 19:
+				return $this->getSessionId();
+				break;
+			default:
+				return null;
+				break;
+		} // switch()
+	}
+
+	/**
+	 * Exports the object as an array.
+	 *
+	 * You can specify the key type of the array by passing one of the class
+	 * type constants.
+	 *
+	 * @param     string  $keyType (optional) One of the class type constants BasePeer::TYPE_PHPNAME, BasePeer::TYPE_STUDLYPHPNAME,
+	 *                    BasePeer::TYPE_COLNAME, BasePeer::TYPE_FIELDNAME, BasePeer::TYPE_NUM.
+	 *                    Defaults to BasePeer::TYPE_PHPNAME.
+	 * @param     boolean $includeLazyLoadColumns (optional) Whether to include lazy loaded columns. Defaults to TRUE.
+	 *
+	 * @return    array an associative array containing the field names (as keys) and field values
+	 */
+	public function toArray($keyType = BasePeer::TYPE_PHPNAME, $includeLazyLoadColumns = true)
+	{
+		$keys = LpPeer::getFieldNames($keyType);
+		$result = array(
+			$keys[0] => $this->getId(),
+			$keys[1] => $this->getLpType(),
+			$keys[2] => $this->getName(),
+			$keys[3] => $this->getRef(),
+			$keys[4] => $this->getDescription(),
+			$keys[5] => $this->getPath(),
+			$keys[6] => $this->getForceCommit(),
+			$keys[7] => $this->getDefaultViewMod(),
+			$keys[8] => $this->getDefaultEncoding(),
+			$keys[9] => $this->getDisplayOrder(),
+			$keys[10] => $this->getContentMaker(),
+			$keys[11] => $this->getContentLocal(),
+			$keys[12] => $this->getContentLicense(),
+			$keys[13] => $this->getPreventReinit(),
+			$keys[14] => $this->getJsLib(),
+			$keys[15] => $this->getDebug(),
+			$keys[16] => $this->getTheme(),
+			$keys[17] => $this->getPreviewImage(),
+			$keys[18] => $this->getAuthor(),
+			$keys[19] => $this->getSessionId(),
+		);
+		return $result;
+	}
+
+	/**
+	 * Sets a field from the object by name passed in as a string.
+	 *
+	 * @param      string $name peer name
+	 * @param      mixed $value field value
+	 * @param      string $type The type of fieldname the $name is of:
+	 *                     one of the class type constants BasePeer::TYPE_PHPNAME, BasePeer::TYPE_STUDLYPHPNAME
+	 *                     BasePeer::TYPE_COLNAME, BasePeer::TYPE_FIELDNAME, BasePeer::TYPE_NUM
+	 * @return     void
+	 */
+	public function setByName($name, $value, $type = BasePeer::TYPE_PHPNAME)
+	{
+		$pos = LpPeer::translateFieldName($name, $type, BasePeer::TYPE_NUM);
+		return $this->setByPosition($pos, $value);
+	}
+
+	/**
+	 * Sets a field from the object by Position as specified in the xml schema.
+	 * Zero-based.
+	 *
+	 * @param      int $pos position in xml schema
+	 * @param      mixed $value field value
+	 * @return     void
+	 */
+	public function setByPosition($pos, $value)
+	{
+		switch($pos) {
+			case 0:
+				$this->setId($value);
+				break;
+			case 1:
+				$this->setLpType($value);
+				break;
+			case 2:
+				$this->setName($value);
+				break;
+			case 3:
+				$this->setRef($value);
+				break;
+			case 4:
+				$this->setDescription($value);
+				break;
+			case 5:
+				$this->setPath($value);
+				break;
+			case 6:
+				$this->setForceCommit($value);
+				break;
+			case 7:
+				$this->setDefaultViewMod($value);
+				break;
+			case 8:
+				$this->setDefaultEncoding($value);
+				break;
+			case 9:
+				$this->setDisplayOrder($value);
+				break;
+			case 10:
+				$this->setContentMaker($value);
+				break;
+			case 11:
+				$this->setContentLocal($value);
+				break;
+			case 12:
+				$this->setContentLicense($value);
+				break;
+			case 13:
+				$this->setPreventReinit($value);
+				break;
+			case 14:
+				$this->setJsLib($value);
+				break;
+			case 15:
+				$this->setDebug($value);
+				break;
+			case 16:
+				$this->setTheme($value);
+				break;
+			case 17:
+				$this->setPreviewImage($value);
+				break;
+			case 18:
+				$this->setAuthor($value);
+				break;
+			case 19:
+				$this->setSessionId($value);
+				break;
+		} // switch()
+	}
+
+	/**
+	 * Populates the object using an array.
+	 *
+	 * This is particularly useful when populating an object from one of the
+	 * request arrays (e.g. $_POST).  This method goes through the column
+	 * names, checking to see whether a matching key exists in populated
+	 * array. If so the setByName() method is called for that column.
+	 *
+	 * You can specify the key type of the array by additionally passing one
+	 * of the class type constants BasePeer::TYPE_PHPNAME, BasePeer::TYPE_STUDLYPHPNAME,
+	 * BasePeer::TYPE_COLNAME, BasePeer::TYPE_FIELDNAME, BasePeer::TYPE_NUM.
+	 * The default key type is the column's phpname (e.g. 'AuthorId')
+	 *
+	 * @param      array  $arr     An array to populate the object from.
+	 * @param      string $keyType The type of keys the array uses.
+	 * @return     void
+	 */
+	public function fromArray($arr, $keyType = BasePeer::TYPE_PHPNAME)
+	{
+		$keys = LpPeer::getFieldNames($keyType);
+
+		if (array_key_exists($keys[0], $arr)) $this->setId($arr[$keys[0]]);
+		if (array_key_exists($keys[1], $arr)) $this->setLpType($arr[$keys[1]]);
+		if (array_key_exists($keys[2], $arr)) $this->setName($arr[$keys[2]]);
+		if (array_key_exists($keys[3], $arr)) $this->setRef($arr[$keys[3]]);
+		if (array_key_exists($keys[4], $arr)) $this->setDescription($arr[$keys[4]]);
+		if (array_key_exists($keys[5], $arr)) $this->setPath($arr[$keys[5]]);
+		if (array_key_exists($keys[6], $arr)) $this->setForceCommit($arr[$keys[6]]);
+		if (array_key_exists($keys[7], $arr)) $this->setDefaultViewMod($arr[$keys[7]]);
+		if (array_key_exists($keys[8], $arr)) $this->setDefaultEncoding($arr[$keys[8]]);
+		if (array_key_exists($keys[9], $arr)) $this->setDisplayOrder($arr[$keys[9]]);
+		if (array_key_exists($keys[10], $arr)) $this->setContentMaker($arr[$keys[10]]);
+		if (array_key_exists($keys[11], $arr)) $this->setContentLocal($arr[$keys[11]]);
+		if (array_key_exists($keys[12], $arr)) $this->setContentLicense($arr[$keys[12]]);
+		if (array_key_exists($keys[13], $arr)) $this->setPreventReinit($arr[$keys[13]]);
+		if (array_key_exists($keys[14], $arr)) $this->setJsLib($arr[$keys[14]]);
+		if (array_key_exists($keys[15], $arr)) $this->setDebug($arr[$keys[15]]);
+		if (array_key_exists($keys[16], $arr)) $this->setTheme($arr[$keys[16]]);
+		if (array_key_exists($keys[17], $arr)) $this->setPreviewImage($arr[$keys[17]]);
+		if (array_key_exists($keys[18], $arr)) $this->setAuthor($arr[$keys[18]]);
+		if (array_key_exists($keys[19], $arr)) $this->setSessionId($arr[$keys[19]]);
+	}
+
+	/**
+	 * Build a Criteria object containing the values of all modified columns in this object.
+	 *
+	 * @return     Criteria The Criteria object containing all modified values.
+	 */
+	public function buildCriteria()
+	{
+		$criteria = new Criteria(LpPeer::DATABASE_NAME);
+
+		if ($this->isColumnModified(LpPeer::ID)) $criteria->add(LpPeer::ID, $this->id);
+		if ($this->isColumnModified(LpPeer::LP_TYPE)) $criteria->add(LpPeer::LP_TYPE, $this->lp_type);
+		if ($this->isColumnModified(LpPeer::NAME)) $criteria->add(LpPeer::NAME, $this->name);
+		if ($this->isColumnModified(LpPeer::REF)) $criteria->add(LpPeer::REF, $this->ref);
+		if ($this->isColumnModified(LpPeer::DESCRIPTION)) $criteria->add(LpPeer::DESCRIPTION, $this->description);
+		if ($this->isColumnModified(LpPeer::PATH)) $criteria->add(LpPeer::PATH, $this->path);
+		if ($this->isColumnModified(LpPeer::FORCE_COMMIT)) $criteria->add(LpPeer::FORCE_COMMIT, $this->force_commit);
+		if ($this->isColumnModified(LpPeer::DEFAULT_VIEW_MOD)) $criteria->add(LpPeer::DEFAULT_VIEW_MOD, $this->default_view_mod);
+		if ($this->isColumnModified(LpPeer::DEFAULT_ENCODING)) $criteria->add(LpPeer::DEFAULT_ENCODING, $this->default_encoding);
+		if ($this->isColumnModified(LpPeer::DISPLAY_ORDER)) $criteria->add(LpPeer::DISPLAY_ORDER, $this->display_order);
+		if ($this->isColumnModified(LpPeer::CONTENT_MAKER)) $criteria->add(LpPeer::CONTENT_MAKER, $this->content_maker);
+		if ($this->isColumnModified(LpPeer::CONTENT_LOCAL)) $criteria->add(LpPeer::CONTENT_LOCAL, $this->content_local);
+		if ($this->isColumnModified(LpPeer::CONTENT_LICENSE)) $criteria->add(LpPeer::CONTENT_LICENSE, $this->content_license);
+		if ($this->isColumnModified(LpPeer::PREVENT_REINIT)) $criteria->add(LpPeer::PREVENT_REINIT, $this->prevent_reinit);
+		if ($this->isColumnModified(LpPeer::JS_LIB)) $criteria->add(LpPeer::JS_LIB, $this->js_lib);
+		if ($this->isColumnModified(LpPeer::DEBUG)) $criteria->add(LpPeer::DEBUG, $this->debug);
+		if ($this->isColumnModified(LpPeer::THEME)) $criteria->add(LpPeer::THEME, $this->theme);
+		if ($this->isColumnModified(LpPeer::PREVIEW_IMAGE)) $criteria->add(LpPeer::PREVIEW_IMAGE, $this->preview_image);
+		if ($this->isColumnModified(LpPeer::AUTHOR)) $criteria->add(LpPeer::AUTHOR, $this->author);
+		if ($this->isColumnModified(LpPeer::SESSION_ID)) $criteria->add(LpPeer::SESSION_ID, $this->session_id);
+
+		return $criteria;
+	}
+
+	/**
+	 * Builds a Criteria object containing the primary key for this object.
+	 *
+	 * Unlike buildCriteria() this method includes the primary key values regardless
+	 * of whether or not they have been modified.
+	 *
+	 * @return     Criteria The Criteria object containing value(s) for primary key(s).
+	 */
+	public function buildPkeyCriteria()
+	{
+		$criteria = new Criteria(LpPeer::DATABASE_NAME);
+		$criteria->add(LpPeer::ID, $this->id);
+
+		return $criteria;
+	}
+
+	/**
+	 * Returns the primary key for this object (row).
+	 * @return     int
+	 */
+	public function getPrimaryKey()
+	{
+		return $this->getId();
+	}
+
+	/**
+	 * Generic method to set the primary key (id column).
+	 *
+	 * @param      int $key Primary key.
+	 * @return     void
+	 */
+	public function setPrimaryKey($key)
+	{
+		$this->setId($key);
+	}
+
+	/**
+	 * Returns true if the primary key for this object is null.
+	 * @return     boolean
+	 */
+	public function isPrimaryKeyNull()
+	{
+		return null === $this->getId();
+	}
+
+	/**
+	 * Sets contents of passed object to values from current object.
+	 *
+	 * If desired, this method can also make copies of all associated (fkey referrers)
+	 * objects.
+	 *
+	 * @param      object $copyObj An object of Lp (or compatible) type.
+	 * @param      boolean $deepCopy Whether to also copy all rows that refer (by fkey) to the current row.
+	 * @throws     PropelException
+	 */
+	public function copyInto($copyObj, $deepCopy = false)
+	{
+		$copyObj->setLpType($this->lp_type);
+		$copyObj->setName($this->name);
+		$copyObj->setRef($this->ref);
+		$copyObj->setDescription($this->description);
+		$copyObj->setPath($this->path);
+		$copyObj->setForceCommit($this->force_commit);
+		$copyObj->setDefaultViewMod($this->default_view_mod);
+		$copyObj->setDefaultEncoding($this->default_encoding);
+		$copyObj->setDisplayOrder($this->display_order);
+		$copyObj->setContentMaker($this->content_maker);
+		$copyObj->setContentLocal($this->content_local);
+		$copyObj->setContentLicense($this->content_license);
+		$copyObj->setPreventReinit($this->prevent_reinit);
+		$copyObj->setJsLib($this->js_lib);
+		$copyObj->setDebug($this->debug);
+		$copyObj->setTheme($this->theme);
+		$copyObj->setPreviewImage($this->preview_image);
+		$copyObj->setAuthor($this->author);
+		$copyObj->setSessionId($this->session_id);
+
+		$copyObj->setNew(true);
+		$copyObj->setId(NULL); // this is a auto-increment column, so set to default value
+	}
+
+	/**
+	 * Makes a copy of this object that will be inserted as a new row in table when saved.
+	 * It creates a new object filling in the simple attributes, but skipping any primary
+	 * keys that are defined for the table.
+	 *
+	 * If desired, this method can also make copies of all associated (fkey referrers)
+	 * objects.
+	 *
+	 * @param      boolean $deepCopy Whether to also copy all rows that refer (by fkey) to the current row.
+	 * @return     Lp Clone of current object.
+	 * @throws     PropelException
+	 */
+	public function copy($deepCopy = false)
+	{
+		// we use get_class(), because this might be a subclass
+		$clazz = get_class($this);
+		$copyObj = new $clazz();
+		$this->copyInto($copyObj, $deepCopy);
+		return $copyObj;
+	}
+
+	/**
+	 * Returns a peer instance associated with this om.
+	 *
+	 * Since Peer classes are not to have any instance attributes, this method returns the
+	 * same instance for all member of this class. The method could therefore
+	 * be static, but this would prevent one from overriding the behavior.
+	 *
+	 * @return     LpPeer
+	 */
+	public function getPeer()
+	{
+		if (self::$peer === null) {
+			self::$peer = new LpPeer();
+		}
+		return self::$peer;
+	}
+
+	/**
+	 * Clears the current object and sets all attributes to their default values
+	 */
+	public function clear()
+	{
+		$this->id = null;
+		$this->lp_type = null;
+		$this->name = null;
+		$this->ref = null;
+		$this->description = null;
+		$this->path = null;
+		$this->force_commit = null;
+		$this->default_view_mod = null;
+		$this->default_encoding = null;
+		$this->display_order = null;
+		$this->content_maker = null;
+		$this->content_local = null;
+		$this->content_license = null;
+		$this->prevent_reinit = null;
+		$this->js_lib = null;
+		$this->debug = null;
+		$this->theme = null;
+		$this->preview_image = null;
+		$this->author = null;
+		$this->session_id = null;
+		$this->alreadyInSave = false;
+		$this->alreadyInValidation = false;
+		$this->clearAllReferences();
+		$this->applyDefaultValues();
+		$this->resetModified();
+		$this->setNew(true);
+		$this->setDeleted(false);
+	}
+
+	/**
+	 * Resets all collections of referencing foreign keys.
+	 *
+	 * This method is a user-space workaround for PHP's inability to garbage collect objects
+	 * with circular references.  This is currently necessary when using Propel in certain
+	 * daemon or large-volumne/high-memory operations.
+	 *
+	 * @param      boolean $deep Whether to also clear the references on all associated objects.
+	 */
+	public function clearAllReferences($deep = false)
+	{
+		if ($deep) {
+		} // if ($deep)
+
+	}
+
+	/**
+	 * Catches calls to virtual methods
+	 */
+	public function __call($name, $params)
+	{
+		if (preg_match('/get(\w+)/', $name, $matches)) {
+			$virtualColumn = $matches[1];
+			if ($this->hasVirtualColumn($virtualColumn)) {
+				return $this->getVirtualColumn($virtualColumn);
+			}
+			// no lcfirst in php<5.3...
+			$virtualColumn[0] = strtolower($virtualColumn[0]);
+			if ($this->hasVirtualColumn($virtualColumn)) {
+				return $this->getVirtualColumn($virtualColumn);
+			}
+		}
+		return parent::__call($name, $params);
+	}
+
+} // BaseLp

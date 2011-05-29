@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Iniciar sesión</title>
+        <meta charset="utf-8" />
+    </head>
+    <body>
+        <div class="comunidad" id="comunidad">
+            <h1>Iniciar sesión</h1>
+            <?php View::content()?>
+            <?php echo Form::open() ?>
+                <input type="hidden" name='mode' value='auth' />
+                <label for="username" class="required">Usuario</label>
+                <?php echo Form::text('username','placeholder="Escriba aqui su nombre de usuario" required="required" autofocus="autofocus"') ?><br />
+                <label for="password" class="required">Clave</label>
+                <?php echo Form::pass('password','placeholder="Escriba aqui su clave" required="required"') ?><br />
+                <button type="submit" class="entrar" >Entrar</button>
+            <?php echo Form::close() ?>     
+        </div>
+    </body>
+</html>

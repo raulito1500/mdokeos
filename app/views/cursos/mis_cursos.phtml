@@ -1,0 +1,8 @@
+<?php
+    foreach($cursos as $curso){
+        echo Html::img('pack-dokeos/curso.gif','Curso');
+        echo Html::link ("cursos/ver/".$curso->getCode(), $curso->getTitle() , $attrs = NULL)."<br />";
+        echo $curso->getCode()." - ".$curso->getTutorName();
+        echo "<br />";
+    }
+?>
