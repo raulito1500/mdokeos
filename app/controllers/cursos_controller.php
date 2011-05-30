@@ -27,8 +27,7 @@ class CursosController extends AppController {
     }
 
     public function mis_cursos() {
-        $c = new Criteria();
-        // TODO: Usar ID de Usuario Logueado
+        $c = new Criteria();        
         $c->add(CourseRelUserPeer::USER_ID, Session::get('id'));
         $cursos = CourseRelUserPeer::doSelect($c);
         foreach ($cursos as $cu) {
@@ -38,16 +37,14 @@ class CursosController extends AppController {
     }
 
     public function inscribirme() {
-        $crit = new Criteria();
-        // TODO:  Usar ID de Usuario Logueado
+        $crit = new Criteria();        
         $crit->add(CourseRelUserPeer::USER_ID, Session::get('id'));
         $crit->addDescendingOrderByColumn(CourseRelUserPeer::SORT);
         $curso = CourseRelUserPeer::doSelectOne($crit);
         $sort = ($curso->getSort() + 1);
 
         $inscripcion = new CourseRelUser();
-        $inscripcion->setCourseCode(Session::get('curso_sel'));
-        // TODO: Usar ID de Usuario Logueado
+        $inscripcion->setCourseCode(Session::get('curso_sel'));        
         $inscripcion->setUserId(Session::get('id'));
         // Por defecto para alumnos ?? creo!
         $inscripcion->setStatus(5);
