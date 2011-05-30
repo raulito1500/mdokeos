@@ -1,10 +1,14 @@
-<ul>
-    <li><?php echo Html::img('pack-dokeos/info.gif','Info')." ".Html::link ("#", " Descripci&oacute;n" , $attrs = NULL); ?></li>
-    <li><?php echo Html::img('pack-dokeos/agenda.gif','Agenda').Html::link ("cursos/agenda", " Agenda" , $attrs = NULL); ?></li>
-    <li><?php echo Html::img('pack-dokeos/folder_document.gif','Documentos').Html::link ("#", " Documentos" , $attrs = NULL); ?></li>
-    <li><?php echo Html::img('pack-dokeos/quiz.gif','Pruebas').Html::link ("#", " Pruebas" , $attrs = NULL); ?></li>
-</ul>
-<ul>
-    <li><?php echo Html::img('pack-dokeos/enroll.gif','Inscribirme').Html::link ("cursos/inscribirme", " Inscribirme en este curso" , $attrs = NULL); ?></li>
-</ul>
+<nav>
+    <ul>
+        <li><?php echo Html::link("#", Html::img('pack-dokeos/info.gif', 'Descripción') . ' Descripción'); ?></li>
+        <li><?php echo Html::link("cursos/agenda", Html::img('pack-dokeos/agenda.gif', ' Agenda') . ' Agenda'); ?></li>
+        <li><?php echo Html::link("#", Html::img('pack-dokeos/folder_document.gif', ' Documentos') . ' Documentos'); ?></li>
+        <li><?php echo Html::link("#", Html::img('pack-dokeos/quiz.gif', 'Pruebas') . ' Pruebas'); ?></li>
+    </ul>
+</nav>
+<nav>
+    <ul>
+        <li><?php echo Html::img('pack-dokeos/enroll.gif', 'Inscribirme') . Html::link("cursos/inscribirme", " Inscribirme en este curso", $attrs = NULL); ?></li>
+    </ul>
+</nav>
 
