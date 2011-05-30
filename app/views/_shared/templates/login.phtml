@@ -3,7 +3,7 @@
     <head>
         <!-- Meta -->
         <meta charset="utf-8" />
-        <title><?php echo $title ?> - premioscmv.com</title>        
+        <title><?php echo $title ?> - mDokeos</title>        
 
         <link href='http://fonts.googleapis.com/css?family=Amaranth' rel='stylesheet' type='text/css'>
 
@@ -15,8 +15,8 @@
         <![endif]-->
 
         <!-- Global Stylesheets -->
-        <link rel="stylesheet" href="/css/less4/reset.css" media="all" />
-        <link rel="stylesheet" href="/css/less4/fonts.css" media="all" />
+        <!-- <link rel="stylesheet" href="/css/less4/reset.css" media="all" /> -->
+        <!-- <link rel="stylesheet" href="/css/less4/fonts.css" media="all" /> -->
         <link rel="stylesheet" href="/css/less4/style.css" media="all" />
 
         <!-- Fallback if browser does not support media queries + javascript (Read: Internet Explorer 7 - 8) -->
@@ -58,32 +58,25 @@
     <body>
         
         <div id="content">               
-            <header>                
-            </header>
-            <nav>
-                <ul>
-                    <li><a href="/" accesskey="1">Inicio</a></li>
-                    <li><a href="/sobre-los-premioscmv/" accesskey="2">Sobre los Premios</a></li>                    
-                    <li><a href="/contacto/" accesskey="3">Contáctanos</a></li>                    
-                </ul>
-            </nav>
+            <header> 
+                <?php echo Html::img('logo.jpg','mDokeos') ?>
+            </header>            
             <section id="contenido">
                 <div class="comunidad" id="comunidad">
                     <h1>Iniciar sesión</h1>
                     <?php View::content()?>
-                    <?php echo Form::open() ?>
-                        <input type="hidden" name='mode' value='auth' />
-                        <label for="username" class="required">Usuario</label>
-                        <?php echo Form::text('username','placeholder="Escriba aqui su nombre de usuario" required="required" autofocus="autofocus"') ?><br />
-                        <label for="password" class="required">Clave</label>
-                        <?php echo Form::pass('password','placeholder="Escriba aqui su clave" required="required"') ?><br />
-                        <button type="submit" class="entrar" >Entrar</button>
+                    <?php echo Form::open() ?>                        
+                            <input type="hidden" name='mode' value='auth' />
+                            
+                            <label for="username" class="required">Usuario</label>
+                            <?php echo Form::text('username','placeholder="Escriba aqui su nombre de usuario" required="required" autofocus="autofocus"') ?>                        
+                            <label for="password" class="required">Clave</label>
+                            <?php echo Form::pass('password','placeholder="Escriba aqui su clave" required="required"') ?>
+                        
+                    <input type="submit" class="entrar" value="Entrar" />
                     <?php echo Form::close() ?>     
                 </div>
-            </section>               
-            <aside id="izquierda">                
-                
-            </aside>
+            </section>  
             <footer>                
                 Powered by <a href="http://kumbiaphp.com">kumbiaphp.com</a>
             </footer>

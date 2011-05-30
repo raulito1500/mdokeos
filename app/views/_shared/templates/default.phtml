@@ -15,8 +15,8 @@
         <![endif]-->
 
         <!-- Global Stylesheets -->
-        <link rel="stylesheet" href="/css/less4/reset.css" media="all" />
-        <link rel="stylesheet" href="/css/less4/fonts.css" media="all" />
+        <!--<link rel="stylesheet" href="/css/less4/reset.css" media="all" />-->
+        <!--<link rel="stylesheet" href="/css/less4/fonts.css" media="all" />-->
         <link rel="stylesheet" href="/css/less4/style.css" media="all" />
 
         <!-- Fallback if browser does not support media queries + javascript (Read: Internet Explorer 7 - 8) -->
@@ -59,9 +59,9 @@
         
         <div id="content">
             <?php echo Html::link('usuario/ver/'.Session::get('username').'/', Session::get('username')); ?> Hola <?php echo Session::get('firstname').' '.Session::get('lastname') ?>. (<a href="/logout/" accesskey="0">Salir</a>)            
-            <header>
-                <h1>mDokeos</h1>
-            </header>
+            <header> 
+                <?php echo Html::img('logo.jpg','mDokeos') ?>
+            </header> 
             <nav>
                 <ul>
                     <li><a href="/" accesskey="1">Inicio</a></li>
@@ -71,10 +71,7 @@
             </nav>
             <section id="contenido">
             <?php View::content(); ?>
-            </section>               
-            <aside id="izquierda">                
-                
-            </aside>
+            </section>       
             <footer>                
                 Powered by <a href="http://kumbiaphp.com">kumbiaphp.com</a>
             </footer>

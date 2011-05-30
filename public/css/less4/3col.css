@@ -17,8 +17,6 @@ px      68    160    252    */
 		padding: 48px 34px 60px;
 	}
 
-
-#example {
-	height: 600px;
-	background: #FF0;
+nav ul li{    
+    display: block;
 }

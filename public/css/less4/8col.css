@@ -16,7 +16,6 @@ body {
 		padding: 48px 28px 60px;
 }
 
-#example {
-	height: 600px;
-	background: #09F;
+#izquierda{    
+    width: 255px;
 }

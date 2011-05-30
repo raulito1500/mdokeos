@@ -18,8 +18,7 @@ body {
 	width: 896px;
 	padding: 72px 48px 84px;
 }
-	
-#example {
-	height: 600px;
-	background: #0F0;
+
+#content {
+    padding: 10px 15px;
 }
