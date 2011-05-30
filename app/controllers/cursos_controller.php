@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Controller por defecto si no se usa el routes
+ * Controlador para los cursos.
  *
  */
 class CursosController extends AppController {
@@ -10,7 +10,7 @@ class CursosController extends AppController {
         Session::set('myDbName', 'dokeos_main');
         Propel::init(APP_PATH . 'config/propel/dokeos-conf.php');
 
-        $this->cursos = CoursePeer::doSelect(new Criteria());
+        $this->cursos = CoursePeer::doSelect(new Criteria());                
     }
 
     public function ver($curso_sel) {
